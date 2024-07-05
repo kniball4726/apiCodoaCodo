@@ -18,6 +18,10 @@ const UsuarioSchema = Schema({
     imagen:{
         type: String,
         default: 'default.png'
+    },
+    fecha:{
+        type: Date,
+        default: Date.now
     }
 })
 

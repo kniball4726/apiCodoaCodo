@@ -1,13 +1,31 @@
-const {connection} = require('../../config/db/nosql')
-const db = connection;
+const validator = require('validator')
+const Usuario = require('../../src/models/Usuario')
+const nosql = require('../../config/db/nosql')
+const db = nosql;
 
 const getTodo = (req, res) =>{
-    db.query("SELECT * FROM alumnos", (err, results) =>{
+    /*db.query("SELECT * FROM alumnos", (err, results) =>{
         if(err){
             res.status(500).send({message: 'Error al obtener los datos'})
             } else {
                 res.json(results)
+                }})*/
+
+    const datos = req.body;
+
+    return res.status(200).json({
+        mensaje: 'Alumno guardado con exito',
+        datos
+     })
+
+     const usuario = new Usuario(datos);
+     usuario.save((err, usuario) => {
+        if(err){
+            return res.status(500).send({message: 'Error al guardar el usuario'})
+            } else {
+                return res.json(usuario)
                 }})
+
 }
 
 const getUno = (req, res) =>{
