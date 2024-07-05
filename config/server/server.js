@@ -5,8 +5,7 @@ const port = config.port.port
 const chalk = require('chalk')
 const path = require('path')
 const routes = require('../../src/routes/index.routes');
-const emoji = require('node-emoji');
-const authroutes = require('./src/routes/auth.routes')
+const authroutes = require('../../src/routes/auth.routes')
 
 const app = express();
 

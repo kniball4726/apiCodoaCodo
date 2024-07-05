@@ -1,4 +1,4 @@
-const {connection} = require('../../config/db/db')
+const {connection} = require('../../config/db/nosql')
 const db = connection;
 
 const getTodo = (req, res) =>{
@@ -21,8 +21,8 @@ const getUno = (req, res) =>{
                 }
 
 const create = (req, res) =>{
-    const {nombre, correo, telefono, profesor, comision, curso} = req.body
-    const results = {nombre, correo, telefono, profesor, comision, curso}
+    const {nombre, dni, correo, telefono, profesor, comision, curso} = req.body
+    const results = {nombre, dni, correo, telefono, profesor, comision, curso}
 
     db.query("INSERT INTO alumnos SET ?", datos, (err, results) =>{
         if(err){

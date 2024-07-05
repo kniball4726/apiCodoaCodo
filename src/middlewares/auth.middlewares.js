@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
 
     if(!token) return res.status(404).send({auth: false, message: 'token mal formado'})
 
-    jwt.verify(token, config.secretkey, (err, decoded) => {
+    jwt.verify(token, config.secret.secretkey, (err, decoded) => {
         if(err) return res.status(500).send({auth: false, message: 'falla de autorización de token'})
         
             req.userId = decoded.id

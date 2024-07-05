@@ -1,9 +1,11 @@
 const server = require('./config/server/server');
-const {connection} = require('./config/db/db')
+//const {connection} = require('./config/db/db')
 const chalk = require('chalk');
+const nosql = require('./config/db/nosql');
 
     server();
-    connection;
+    //connection;
+    nosql();
     console.log();
 
 setTimeout(function(){

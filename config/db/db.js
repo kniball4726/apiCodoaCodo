@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+/*const mysql = require('mysql2');
 const config = require('../config');
 const chalk = require('chalk');
 
@@ -19,4 +19,4 @@ let connection ;
         
  
 
-module.exports = {connection};
+module.exports = {connection};*/
