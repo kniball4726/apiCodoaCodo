@@ -1,32 +1,21 @@
-const validator = require('validator')
 const Usuario = require('../../src/models/Usuario')
 const nosql = require('../../config/db/nosql')
 const db = nosql;
 
 const getTodo = (req, res) =>{
-    /*db.query("SELECT * FROM alumnos", (err, results) =>{
-        if(err){
-            res.status(500).send({message: 'Error al obtener los datos'})
-            } else {
-                res.json(results)
-                }})*/
 
     const datos = req.body;
-
-    return res.status(200).json({
-        mensaje: 'Alumno guardado con exito',
-        datos
-     })
 
      const usuario = new Usuario(datos);
      usuario.save((err, usuario) => {
         if(err){
             return res.status(500).send({message: 'Error al guardar el usuario'})
-            } else {
-                return res.json(usuario)
-                }})
-
-}
+        } else {
+            return res.status(200).json({
+            status: 'success',
+            mensaje: 'Alumno guardado con exito',
+            usuario})}
+        })}
 
 const getUno = (req, res) =>{
     const id = req.params.id
@@ -39,17 +28,18 @@ const getUno = (req, res) =>{
                 }
 
 const create = (req, res) =>{
-    const {nombre, dni, correo, telefono, profesor, comision, curso} = req.body
-    const results = {nombre, dni, correo, telefono, profesor, comision, curso}
+    const datos = req.body;
 
-    db.query("INSERT INTO alumnos SET ?", datos, (err, results) =>{
+     const usuario = new Usuario(datos);
+     usuario.save((err, usuario) => {
         if(err){
-            res.status(500).send({message: 'Error al crear el registro'})
-            } else {
-                res.json({message: 'Registro creado con éxito',
-                    results})
-                }})
-                }
+            return res.status(500).send({message: 'Error al guardar el usuario'})
+        } else {
+            return res.status(200).json({
+            status: 'success',
+            mensaje: 'Alumno guardado con exito',
+            usuario})}
+        })}
 
 const update = (req, res) =>{
     const id = req.params.id

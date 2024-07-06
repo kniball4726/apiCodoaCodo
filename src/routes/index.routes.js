@@ -5,6 +5,8 @@ const ccurso = require('../controllers/curso.controllers')
 const cprofesor = require('../controllers/profesor.controllers')
 const router = express.Router();
 
+//Rutas 
+
 //Rutas alumnos
 router.get("/alumnos/",calumnos.getTodo);
 router.get("/alumnos/:id",calumnos.getUno);

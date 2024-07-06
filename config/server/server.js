@@ -12,11 +12,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.set('view engine','ejs');
 app.use(express.static(path.join(__dirname,('../../public'))));
 app.use('/api/v1', routes);
 app.use('/api/v1/auth', authroutes);
-app.use('*', (req,res) =>{
-    res.sendFile(path.join(__dirname,('../../public/index.html')))
+app.use('*', function(req,res) {
+    res.render('404');
 });
 
 const server = async() =>{
